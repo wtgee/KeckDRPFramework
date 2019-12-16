@@ -43,6 +43,7 @@ Framework design and concepts
   keckdrpframework/events_actions.rst
   keckdrpframework/framework.rst
   keckdrpframework/plotting_bokeh.rst
+  keckdrpframework/template_pipeline.rst
 
 
 Reference/API
