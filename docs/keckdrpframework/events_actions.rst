@@ -1,3 +1,5 @@
+.. _events_actions:
+
 Events and Actions
 ==================
 

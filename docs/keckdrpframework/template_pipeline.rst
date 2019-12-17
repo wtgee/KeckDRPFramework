@@ -6,11 +6,13 @@ In this example we will create a data reduction package called MyDRP.
 The directory ``pipeline_template`` provides a simple starting point to create a data processing
 pipeline.
 
-Start by making a copy of the directory with all the included subdirectories::
+Start by making a copy of the directory with all the included subdirectories
 
-  mkdir MyPipeline
-  cd MyPipeline
-  cp -r KeckDRPFramework/keckdrpframework/pipeline_template .
+.. code-block:: python
+
+  >>> mkdir MyPipeline
+  >>> cd MyPipeline
+  >>> cp -r KeckDRPFramework/keckdrpframework/pipeline_template .
 
 Setup.py
 ^^^^^^^^
@@ -23,29 +25,39 @@ package name of your pipeline, so you might want to change this variable accordi
 Create the main pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-As a first step, rename the directory ``my_pipeline`` to be the name of the pipeline that you are creating::
+As a first step, rename the directory ``my_pipeline`` to be the name of the pipeline that you are creating
 
-  mv my_pipeline MyDRP
+.. code-block:: python
 
-In the directory ``pipelines``, rename the ``template_pipeline.py``::
+  >>>mv my_pipeline MyDRP
 
-  cd MyDRP/pipelines
-  mv template_pipeline.py MyDRP.py
+In the directory ``pipelines``, rename the ``template_pipeline.py``
+
+.. code-block:: python
+
+  >>>cd MyDRP/pipelines
+  >>>mv template_pipeline.py MyDRP.py
 
 You can now edit the file by completing the entries in the ``event_table``. A complete description of the
-event table is provided in :doc:`events_actions.rst`. The ``import`` section of this file is made of two
-parts: first we import the necessary framework modules such as::
+event table is provided in :ref:`events_actions`. The ``import`` section of this file is made of two
+parts: first we import the necessary framework modules such as:
+
+.. code-block:: python
 
   from keckdrpframework.pipelines.base_pipeline import BasePipeline
 
 Then we import all the primitives that are defined in the ``primitives`` directory, and that will
 ultimately provide the actual processing. In the simple case in which a single primitive is invoked,
 a single entry in the event table is all that is needed.
-Remember that the format for the event table is::
+Remember that the format for the event table is:
+
+.. code-block:: python
 
   event_name: (primitive_name, state, next event)
 
-Which can be simplified to::
+Which can be simplified to:
+
+.. code-block:: python
 
   event_name: (primitive_name, None, None)
 
@@ -55,13 +67,17 @@ Connecting the event to the code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Let's now turn to the primitives directory, and start by renaming the ``template_primitive.py`` file
-to a suitable name::
+to a suitable name
+
+.. code-block:: python
 
   mv template_primitive.py mydrp_primitive.py
 
 We can now edit the file to change the name of the primitive that is defined in the file. Change the name
 ``Template`` to the primitive_name that you have used in your event table. If the primitive that you are
-defining here is called ``class DrpPrimitive:``, then your event table should look like this::
+defining here is called ``class DrpPrimitive:``, then your event table should look like this
+
+.. code-block:: python
 
   event_table: {
      "mydrp_event": ("DrpPrimitive", None, None)
