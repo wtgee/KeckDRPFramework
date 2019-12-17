@@ -1,10 +1,14 @@
+.. _pipelines:
+
 Pipelines
 =========
 Through the creation of a pipeline, you can make the code that is contained in the primitives available to the framework
 so that it can be applied to specific arguments.
 
 Pipelines are created by subclassing the ``Base_pipeline`` class and adding an event table.
-In its basic implementation, a pipeline would look like this::
+In its basic implementation, a pipeline would look like this:
+
+.. code-block:: python
 
  class MyPipeline(Base_pipeline):
    """
@@ -33,7 +37,9 @@ There is a pre-defined event table that is built into the base pipeline class: i
 that the framework should be doing if no event is present in the execution queue, essentially implementing
 the infinite loop that the framework executes while waiting for events.
 
-As an example of a more realisting pipeline, here are some examples taken from the KCWI pipeline::
+As an example of a more realistic pipeline, here are some examples taken from the KCWI pipeline:
+
+.. code-block:: python
 
  event_table = {
         "next_file": ("ingest_file", "file_ingested", "file_ingested"),
@@ -88,7 +94,9 @@ view, this makes no difference.
 
 A pipeline definition file should also import the framework package and all the primitives that the user
 has defined. For example, in the case of KCWI and having created a directory called ``primitives``,
-the import section might look like this::
+the import section might look like this:
+
+.. code-block:: python
 
  from keckdrpframework.pipelines.base_pipeline import Base_pipeline
 

@@ -1,10 +1,14 @@
+.. _framework:
+
 The DRP Framework and the event queues
 ======================================
 
 The ``framework`` module is the core of the system.
 
 To illustrate a possible way to start up the framework, connect it to the pipeline, and then set it in motion, consider
-this example::
+this example:
+
+.. code-block:: python
 
  from ..pipelines.kcwi_pipeline import Kcwi_pipeline
 

@@ -23,7 +23,9 @@ pipeline. For now, it is sufficient to know that once an event is triggered, the
 will be set to the value specified in this field.
 
 The ``next event`` is used to create automatic chains of events, if that is desired. For example,
-if you are creating a basic CCD reduction pipeline, you could write events like this::
+if you are creating a basic CCD reduction pipeline, you could write events like this:
+
+.. code-block:: python
 
  event_table = {
     "correct_bias":    ("subtract_bias", "bias_processing", "correct_overscan"),

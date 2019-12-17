@@ -1,3 +1,5 @@
+.. _bokeh:
+
 Plotting with Bokeh
 ======================================
 
@@ -8,7 +10,9 @@ A solution is to use Bokeh, which is thread-safe.
 An implementation of this solution is offered by the framework using the bokeh_plotting module. In this implementation,
 we will run a bokeh server, started up by the initialization script, and then connect to it.
 
-To plot with bokeh, start by adding a special event to your pipeline event table::
+To plot with bokeh, start by adding a special event to your pipeline event table:
+
+.. code-block:: python
 
 
  from ..primitives.start_bokeh import start_bokeh
@@ -24,7 +28,9 @@ To plot with bokeh, start by adding a special event to your pipeline event table
     }
 
 
-The special event is described in a primitive that we will call start_bokeh.py::
+The special event is described in a primitive that we will call start_bokeh.py:
+
+.. code-block:: python
 
  from keckdrpframework.primitives.base_primitive import BasePrimitive
 
@@ -54,7 +60,9 @@ The special event is described in a primitive that we will call start_bokeh.py::
          curdoc().add_root(c)
          self.context.bokeh_session.show(c)
 
-This special event can be then triggered immediately by your startup script and added to the high priority queue::
+This special event can be then triggered immediately by your startup script and added to the high priority queue:
+
+.. code-block:: python
 
  subprocess.Popen('bokeh serve', shell=True)
  framework.append_event('start_bokeh', None)
@@ -64,8 +72,9 @@ Plotting
 
 The actual plotting is performed by the primitives as needed.
 
-As an example::
+As an example:
 
+.. code-block:: python
  from bokeh.plotting import figure
  from bokeh.models import Range1d
  from bokeh.models.markers import X

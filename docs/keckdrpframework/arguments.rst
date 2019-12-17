@@ -1,3 +1,5 @@
+.. _arguments:
+
 Arguments
 =========
 The ``Arguments`` class provides a flexible way to store any argument that need to be passed to functions or classes.
@@ -10,7 +12,9 @@ An example of using the concept of ``arguments`` is the way that we process the 
 this instrument, the raw FITS file is made of two extensions: the actual CCD data and a table listing the shutter
 open/close events with timestamps.
 
-To read this type of FITS files, we can define a specific FITS reader for KCWI as::
+To read this type of FITS files, we can define a specific FITS reader for KCWI as:
+
+.. code-block:: python
 
  def kcwi_fits_reader(file):
     """A reader for KeckData objects.
@@ -24,7 +28,9 @@ To read this type of FITS files, we can define a specific FITS reader for KCWI a
         table = hdul[1]
 
 We can then create a primitive that can take care of ingesting a KCWI FITS file by subclassing the ``Base_primitive``
-as described in the previous section::
+as described in the previous section:
+
+.. code-block:: python
 
  class kcwi_fits_ingest(Base_primitive):
 
