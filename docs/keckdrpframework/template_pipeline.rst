@@ -12,11 +12,7 @@ Start by making a copy of the directory with all the included subdirectories
 
   >>> mkdir MyPipeline
   >>> cd MyPipeline
-<<<<<<< HEAD
   >>> cp -r <KeckDRPFramework_LOCATION>/keckdrpframework/pipeline_template/. .
-=======
-  >>> cp -r KeckDRPFramework/keckdrpframework/pipeline_template .
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
 
 Setup.py
 ^^^^^^^^
@@ -24,7 +20,6 @@ You can now start editing the files in the new pipeline, starting with ``setup.p
 it is important to edit the NAME, the description and the licence. Note that this file assumes that
 any command line interface script will live in the ``scripts`` directory. Note also that the package name
 is currently set to ``my_pipeline``. In the next step, we will rename this directory to be the actual
-<<<<<<< HEAD
 package name of your pipeline, so you need to change this variable accordingly.
 
 Eventually, your ``setup.py`` file should contain:
@@ -35,10 +30,6 @@ And the setup dictionary should contain:
 .. code-block:: python
    packages=['MyDRP',],
 
-=======
-package name of your pipeline, so you might want to change this variable accordingly.
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
-
 Create the main pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -48,22 +39,14 @@ As a first step, rename the directory ``my_pipeline`` to be the name of the pipe
 
   >>> mv my_pipeline MyDRP
 
-<<<<<<< HEAD
 In the subdirectory ``pipelines``, rename the ``template_pipeline.py``
-=======
-In the directory ``pipelines``, rename the ``template_pipeline.py``
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
 
 .. code-block:: python
 
   >>> cd MyDRP/pipelines
   >>> mv template_pipeline.py MyDRP.py
 
-<<<<<<< HEAD
 You can now edit the ``MyDRP.py`` file by completing the entries in the ``event_table``. A complete description of the
-=======
-You can now edit the file by completing the entries in the ``event_table``. A complete description of the
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
 event table is provided in :ref:`events_actions`. The ``import`` section of this file is made of two
 parts: first we import the necessary framework modules such as:
 
@@ -72,7 +55,6 @@ parts: first we import the necessary framework modules such as:
   from keckdrpframework.pipelines.base_pipeline import BasePipeline
 
 Then we import all the primitives that are defined in the ``primitives`` directory, and that will
-<<<<<<< HEAD
 ultimately provide the actual processing. Using the primitive that we will define later, your import
 should look like this:
 
@@ -80,10 +62,6 @@ should look like this:
   from ..primitives.mydrp_primitive import *
 
 In the simple case in which a single primitive is invoked, a single entry in the event table is all that is needed.
-=======
-ultimately provide the actual processing. In the simple case in which a single primitive is invoked,
-a single entry in the event table is all that is needed.
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
 Remember that the format for the event table is:
 
 .. code-block:: python
@@ -98,7 +76,6 @@ Which can be simplified to:
 
 if no state update is required and we don't need to trigger another event after the first.
 
-<<<<<<< HEAD
 Again, using the primitive that we will define later, your event table will look like this:
 
 .. code-block:: python
@@ -112,8 +89,6 @@ The final step is to change the name of the main class, from ``template_pipeline
   class MyDRP (BasePipeline):
 
 
-=======
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
 Connecting the event to the code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -125,7 +100,6 @@ to a suitable name
   >>> mv template_primitive.py mydrp_primitive.py
 
 We can now edit the file to change the name of the primitive that is defined in the file. Change the name
-<<<<<<< HEAD
 ``Template`` to the primitive_name that you have used in your event table.
 
 .. code-block:: python
@@ -149,19 +123,6 @@ Note that we have replaced the "not yet implemented" code with a very simple ope
 printing the name of the file being processed. This is just to have code that can run without
 generating an exception.
 
-=======
-``Template`` to the primitive_name that you have used in your event table. If the primitive that you are
-defining here is called ``class DrpPrimitive:``, then your event table should look like this
-
-.. code-block:: python
-
-  event_table: {
-     "mydrp_event": ("DrpPrimitive", None, None)
-     }
-
-At this point, we have created a basic pipeline, which only handles a single event. When the event is triggered,
-the framework will run the code contained in the ``DrpPrimitive`` class.
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
 See the :ref:`primitives` documentation for a complete description of the primitives.
 
 Creating the startup script
@@ -182,7 +143,6 @@ In practice, the specific section of the startup script would say:
   # single frame processing
     elif args.frames:
         for frame in args.frames:
-<<<<<<< HEAD
             arguments = Arguments(name=frame)
             framework.append_event('mydrp_event', arguments)
 
@@ -201,13 +161,6 @@ Other changes that are needed to this files are:
         print("Failed to initialize framework, exiting ...", e)
 
 We are now ready to install the pipeline and run it (we will use an example file called myfitsfile.fits)
-=======
-        arguments = Arguments(name=frame)
-        framework.append_event('mydrp_event', arguments)
-
-We are now ready to install the pipeline and run it.
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
-
 .. code-block:: python
 
   >>> python setup.py develop
@@ -221,7 +174,6 @@ to the ``mydrp_event``, which is associated to the ``DrpPrimitive`` code. The co
 will inherit the argument, accessed via ``self.action.args`` and will execute the ``_perform`` method
 of the class.
 
-<<<<<<< HEAD
 The result of the run should look like this:
 .. code-block:: python
     2019-12-17 10:20:49:DRPF:INFO: Framework initialized
@@ -232,10 +184,4 @@ The result of the run should look like this:
     2019-12-17 10:20:49:DRPF:INFO: Action DrpPrimitive done
     2019-12-17 10:20:50:DRPF:INFO: No new events - do nothing
     2019-12-17 10:20:50:DRPF:INFO: No pending events or actions, terminating
-
-=======
->>>>>>> b0500e42e8ebf8f72d4191c241f443e96550266e
-
-
-
 
