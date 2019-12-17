@@ -1,4 +1,4 @@
-:: _primitives:
+.. _primitives:
 
 Primitives
 ==========
