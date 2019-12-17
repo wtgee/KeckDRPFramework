@@ -111,8 +111,9 @@ In practice, the specific section of the startup script would say:
 We are now ready to install the pipeline and run it.
 
 .. code-block:: python
- >>> python setup.py develop
- >>> template_script -frames=myfitsfile.fits -c config.cfg
+
+  >>> python setup.py develop
+  >>> template_script -frames=myfitsfile.fits -c config.cfg
 
 Here we are assuming that the configuration parameters in config.cfg are correct. A discussion of the
 configuration parameters can be found in TBD.
