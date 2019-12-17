@@ -24,10 +24,12 @@ package name of your pipeline, so you need to change this variable accordingly.
 
 Eventually, your ``setup.py`` file should contain:
 .. code-block:: python
+
   NAME = 'MyDRP'
 
 And the setup dictionary should contain:
 .. code-block:: python
+
    packages=['MyDRP',],
 
 Create the main pipeline
@@ -59,6 +61,7 @@ ultimately provide the actual processing. Using the primitive that we will defin
 should look like this:
 
 .. code-block:: python
+
   from ..primitives.mydrp_primitive import *
 
 In the simple case in which a single primitive is invoked, a single entry in the event table is all that is needed.
@@ -79,6 +82,7 @@ if no state update is required and we don't need to trigger another event after 
 Again, using the primitive that we will define later, your event table will look like this:
 
 .. code-block:: python
+
   event_table: {
      "mydrp_event": ("DrpPrimitive", None, None)
      }
@@ -86,6 +90,7 @@ Again, using the primitive that we will define later, your event table will look
 The final step is to change the name of the main class, from ``template_pipeline`` to ``MyDRP``:
 
 .. code-block:: python
+
   class MyDRP (BasePipeline):
 
 
@@ -151,6 +156,7 @@ Other changes that are needed to this files are:
  - pass the imported pipeline as an argument to the framework initialization code
 
 .. code-block:: python
+
   from MyDRP.pipelines.MyDRP import MyDRP
 
 .. code-block:: python
@@ -175,7 +181,9 @@ will inherit the argument, accessed via ``self.action.args`` and will execute th
 of the class.
 
 The result of the run should look like this:
+
 .. code-block:: python
+
     2019-12-17 10:20:49:DRPF:INFO: Framework initialized
     2019-12-17 10:20:49:DRPF:INFO: Event to action ('DrpPrimitive', None, None)
     2019-12-17 10:20:49:DRPF:INFO: Framework main loop started
