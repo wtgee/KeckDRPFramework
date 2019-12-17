@@ -1,3 +1,5 @@
+:: _primitives:
+
 Primitives
 ==========
 The operational code is contained in primitives, which are either functions or classes and are limited to simple,
@@ -17,7 +19,9 @@ methods. In its full implementation, the ``Base_primitive`` class contains the f
 - ``_post_condition``, which is checked upon completion of the code contained in the ``_perform`` method
 
 The execution of the code contained in a class defined following our template is governed by the ``apply`` method,
-which is standard and should not be modified. The apply method works like this::
+which is standard and should not be modified. The apply method works like this:
+
+.. code-block:: python
 
     def apply (self):
         if self._pre_condition():
@@ -28,7 +32,9 @@ which is standard and should not be modified. The apply method works like this::
 
 If a the full check on pre and post conditions is not necessary, a simpler class can be defined by simply preserving the ``__init__``
 and the ``_perform`` methods.
-An example of a primitive defined this way is a simple FITS reader::
+An example of a primitive defined this way is a simple FITS reader:
+
+.. code-block:: python
 
  def open_nowarning (filename):
     with warnings.catch_warnings():

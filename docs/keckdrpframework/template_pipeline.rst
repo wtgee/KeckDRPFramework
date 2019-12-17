@@ -29,14 +29,14 @@ As a first step, rename the directory ``my_pipeline`` to be the name of the pipe
 
 .. code-block:: python
 
-  >>>mv my_pipeline MyDRP
+  >>> mv my_pipeline MyDRP
 
 In the directory ``pipelines``, rename the ``template_pipeline.py``
 
 .. code-block:: python
 
-  >>>cd MyDRP/pipelines
-  >>>mv template_pipeline.py MyDRP.py
+  >>> cd MyDRP/pipelines
+  >>> mv template_pipeline.py MyDRP.py
 
 You can now edit the file by completing the entries in the ``event_table``. A complete description of the
 event table is provided in :ref:`events_actions`. The ``import`` section of this file is made of two
@@ -71,7 +71,7 @@ to a suitable name
 
 .. code-block:: python
 
-  mv template_primitive.py mydrp_primitive.py
+  >>> mv template_primitive.py mydrp_primitive.py
 
 We can now edit the file to change the name of the primitive that is defined in the file. Change the name
 ``Template`` to the primitive_name that you have used in your event table. If the primitive that you are
@@ -85,7 +85,7 @@ defining here is called ``class DrpPrimitive:``, then your event table should lo
 
 At this point, we have created a basic pipeline, which only handles a single event. When the event is triggered,
 the framework will run the code contained in the ``DrpPrimitive`` class.
-See the :doc:`primitives.rst` documentation for a complete description of the primitives.
+See the :ref:`primitives` documentation for a complete description of the primitives.
 
 
 
