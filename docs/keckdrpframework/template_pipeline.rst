@@ -87,7 +87,40 @@ At this point, we have created a basic pipeline, which only handles a single eve
 the framework will run the code contained in the ``DrpPrimitive`` class.
 See the :ref:`primitives` documentation for a complete description of the primitives.
 
+Creating the startup script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+The final step to run the pipeline is to trigger the new event and apply it to a file, such as FITS file.
+There are many ways of doing this (see :ref:`_startup_script`).
+
+The easiest approach is to use the "single file" method, where the use specifies the ``-frames`` argument.
+
+In the script, make sure that the event that is generates is not ``next_file`` but ``mydrp_event``, which
+is the event that you specified in the ``event_table``.
+
+In practice, the specific section of the startup script would say:
+
+.. code-block:: python
+
+  # single frame processing
+    elif args.frames:
+        for frame in args.frames:
+        arguments = Arguments(name=frame)
+        framework.append_event('mydrp_event', arguments)
+
+We are now ready to install the pipeline and run it.
+
+.. code-block:: python
+ >>> python setup.py develop
+ >>> template_script -frames=myfitsfile.fits -c config.cfg
+
+Here we are assuming that the configuration parameters in config.cfg are correct. A discussion of the
+configuration parameters can be found in TBD.
+
+If everything worked correctly, the script will assign the file to an argument and pass the argument
+to the ``mydrp_event``, which is associated to the ``DrpPrimitive`` code. The code in that primitive
+will inherit the argument, accessed via ``self.action.args`` and will execute the ``_perform`` method
+of the class.
 
 
 
