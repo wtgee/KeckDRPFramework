@@ -167,6 +167,7 @@ Other changes that are needed to this files are:
         print("Failed to initialize framework, exiting ...", e)
 
 We are now ready to install the pipeline and run it (we will use an example file called myfitsfile.fits)
+
 .. code-block:: python
 
   >>> python setup.py develop
