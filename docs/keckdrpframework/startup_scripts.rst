@@ -22,10 +22,14 @@ To reduce a single file or a set of files, the framework can be started with the
 
 .. code-block:: python
 
-  >>> template_script.py -frames=file1.fits,file2.fits -c config.cfg
+  >>> template_script.py -frames=file1.fits file2.fits -c config.cfg
 
-The default script will add a ``next_file`` event to the queue, using the file name as a argument. This is
-specified in the script itself, and can be changed if needed.
+The default script will add a default event to the queue, using the file name as a argument. This event
+is specified in the configuration file, as ``default_ingestion_event``. A standard event is provided
+as default, called ``ingest_only``. This event is always available, inherited from the ``BasePipeline``.
+It does not process the data in any way. Note that the reason why we introduced the idea of a default
+event upon ingestion is that the framework is also able to automatically monitor a directory and ingest
+the files as they appear. When run in that mode, it is necessary to have a default processing step.
 
 Ingestion of all the files in a specified directory
 ---------------------------------------------------
@@ -39,7 +43,8 @@ following command line:
 
 All the files in the specified directory will be ingested if they match the infiles pattern, and a
 ``next_file`` event will be triggered for each of them. If ``-m -W`` are specified in the command line,
-the framework will continue to monitor the directory, and trigger a ``next_file`` event for each new file.
+the framework will continue to monitor the directory, and trigger the default ingestion event for each new file.
+See previous section for a description of the default event.
 
 Starting the framework processing engine with no files
 ------------------------------------------------------
